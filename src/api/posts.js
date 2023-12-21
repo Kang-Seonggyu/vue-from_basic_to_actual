@@ -1,21 +1,21 @@
-import axios from 'axios';
+import { posts } from '.';
 
-export const getPosts = () => {
-	return axios.get('http://localhost:4000/posts');
+export const getPosts = params => {
+	return posts.get('/', { params });
 };
 
 export const getPostById = id => {
-	return axios.get(`http://localhost:4000/posts/${id}`);
+	return posts.get(id);
 };
 
 export const createPost = data => {
-	return axios.post('http://localhost:4000/posts', data);
+	return posts.post('/', data);
 };
 
 export const updatePost = (id, data) => {
-	return axios.put(`http://localhost:4000/posts/${id}`, data);
+	return posts.put(id, data);
 };
 
 export const deletePost = id => {
-	return axios.delete(`http://localhost:4000/posts/${id}`);
+	return posts.delete(id);
 };

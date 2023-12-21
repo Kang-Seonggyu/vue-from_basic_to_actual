@@ -68,7 +68,7 @@
 	</div>
 	<hr class="my-4" />
 	<AppCard>
-		<PostDetailView :id="1" />
+		<PostDetailView id="1" />
 	</AppCard>
 </template>
 
