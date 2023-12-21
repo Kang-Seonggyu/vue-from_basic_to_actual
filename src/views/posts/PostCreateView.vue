@@ -2,25 +2,12 @@
 	<div>
 		<h2>게시글 등록</h2>
 		<hr class="my-4" />
-		<form @submit.prevent="save">
-			<div class="mb-3">
-				<label for="postTitle" class="form-label">제목</label>
-				<input
-					type="text"
-					v-model="form.title"
-					class="form-control"
-					id="postTitle"
-				/>
-			</div>
-			<div class="mb-3">
-				<label for="postContent" class="form-label">내용</label>
-				<textarea
-					class="form-control"
-					v-model="form.content"
-					id="postContent"
-				></textarea>
-			</div>
-			<div>
+		<PostForm
+			v-model:title="form.title"
+			v-model:content="form.content"
+			@submit.prevent="save"
+		>
+			<template #actions>
 				<button
 					type="button"
 					class="btn btn-outline-dark me-2"
@@ -29,13 +16,14 @@
 					목록
 				</button>
 				<button type="submit" class="btn btn-primary">저장</button>
-			</div>
-		</form>
+			</template>
+		</PostForm>
 	</div>
 </template>
 
 <script setup>
 import { createPost } from '@/api/posts';
+import PostForm from '@/components/posts/PostForm.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
