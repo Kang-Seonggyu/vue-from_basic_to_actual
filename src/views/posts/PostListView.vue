@@ -13,10 +13,16 @@
 			</div>
 		</div>
 	</div>
+	<hr class="my-4" />
+	<AppCard>
+		<PostDetailView :id="1" />
+	</AppCard>
 </template>
 
 <script setup>
 import PostItem from '@/components/posts/PostItem.vue';
+import PostDetailView from './PostDetailView.vue';
+import AppCard from '@/components/AppCard.vue';
 import { getPosts } from '@/api/posts';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
@@ -30,7 +36,7 @@ const fecthPosts = () => {
 fecthPosts();
 
 const goDetail = id => {
-	router.push(`/posts/${id}`);
+	router.push({ name: 'PostDetail', params: { id } });
 };
 </script>
 
