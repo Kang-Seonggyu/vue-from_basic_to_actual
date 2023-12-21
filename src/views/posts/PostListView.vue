@@ -30,8 +30,13 @@ import { ref } from 'vue';
 const router = useRouter();
 const posts = ref([]);
 
-const fecthPosts = () => {
-	posts.value = getPosts();
+const fecthPosts = async () => {
+	try {
+		const { data } = await getPosts();
+		posts.value = data;
+	} catch (err) {
+		console.error(err);
+	}
 };
 fecthPosts();
 

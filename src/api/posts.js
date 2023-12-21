@@ -1,15 +1,21 @@
-const posts = [
-	{ id: 1, title: '제목1', content: '내용1', createdAt: '2020-01-01' },
-	{ id: 2, title: '제목2', content: '내용2', createdAt: '2020-01-01' },
-	{ id: 3, title: '제목3', content: '내용3', createdAt: '2020-01-01' },
-	{ id: 4, title: '제목4', content: '내용4', createdAt: '2020-01-01' },
-	{ id: 5, title: '제목5', content: '내용5', createdAt: '2020-01-01' },
-];
+import axios from 'axios';
 
 export const getPosts = () => {
-	return posts;
+	return axios.get('http://localhost:4000/posts');
 };
 
 export const getPostById = id => {
-	return posts.find(item => item.id === id);
+	return axios.get(`http://localhost:4000/posts/${id}`);
+};
+
+export const createPost = data => {
+	return axios.post('http://localhost:4000/posts', data);
+};
+
+export const updatePost = (id, data) => {
+	return axios.put(`http://localhost:4000/posts/${id}`, data);
+};
+
+export const deletePost = id => {
+	return axios.delete(`http://localhost:4000/posts/${id}`);
 };
