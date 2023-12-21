@@ -31,6 +31,11 @@
 								게시글
 							</RouterLink>
 						</li>
+						<li class="nav-item">
+							<RouterLink class="nav-link" active-class="active" to="/nested">
+								Nested
+							</RouterLink>
+						</li>
 					</ul>
 					<button class="btn btn-primary" type="submit" @click="goPost">
 						글쓰기
