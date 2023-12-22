@@ -17,7 +17,7 @@
 		</template>
 	</AppGrid>
 
-	<AppModal :show="show" title="게시글" @close="closeModal">
+	<AppModal v-model="show" title="게시글">
 		<template #default>
 			<div class="row">
 				<div class="col-3 text-muted">제목</div>
