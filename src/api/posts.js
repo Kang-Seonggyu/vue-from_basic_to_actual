@@ -12,8 +12,11 @@ export const createPost = data => {
 	return posts.post('/', data);
 };
 
+// export const updatePost = (id, data) => {
+// 	return posts.put(`${id}`, data);
+// };
 export const updatePost = (id, data) => {
-	return posts.put(`${id}`, data);
+	return posts.patch(`${id}`, data);
 };
 
 export const deletePost = id => {
