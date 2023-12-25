@@ -17,22 +17,6 @@
 		</template>
 	</AppGrid>
 
-	<AppModal v-model="show" title="게시글">
-		<template #default>
-			<div class="row">
-				<div class="col-3 text-muted">제목</div>
-				<div class="col-9">{{ modal.title }}</div>
-				<div class="col-3 text-muted">내용</div>
-				<div class="col-9">{{ modal.content }}</div>
-				<div class="col-3 text-muted">등록일</div>
-				<div class="col-9">{{ modal.createdAt }}</div>
-			</div>
-		</template>
-		<template #actions>
-			<button class="btn btn-secondary" @click="closeModal">닫기</button>
-		</template>
-	</AppModal>
-
 	<AppPagination
 		:currentPage="params._page"
 		:page-count="pageCount"
@@ -42,6 +26,14 @@
 			}
 		"
 	/>
+
+	<PostModal
+		v-model="show"
+		:title="modal.title"
+		:content="modal.content"
+		:created-at="modal.createdAt"
+	/>
+
 	<template v-if="posts && posts.length > 0">
 		<hr class="my-4" />
 		<AppCard>
@@ -53,11 +45,11 @@
 <script setup>
 import PostFilter from '@/components/posts/PostFilter.vue';
 import PostItem from '@/components/posts/PostItem.vue';
+import PostModal from '@/components/posts/PostModal.vue';
 import PostDetailView from './PostDetailView.vue';
 import AppCard from '@/components/AppCard.vue';
 import AppPagination from '@/components/AppPagination.vue';
 import AppGrid from '@/components/AppGrid.vue';
-import AppModal from '@/components/AppModal.vue';
 import { getPosts } from '@/api/posts';
 import { useRouter } from 'vue-router';
 import { computed, ref, watchEffect } from 'vue';
@@ -110,9 +102,6 @@ const openModal = ({ title, content, createdAt }) => {
 		content,
 		createdAt,
 	};
-};
-const closeModal = () => {
-	show.value = false;
 };
 </script>
 
